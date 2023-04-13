@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/client")
@@ -20,5 +21,14 @@ public class ClientMaster {
     @PostMapping("/add")
     public ResponseEntity<Client> postClient(@RequestBody Client newClient){
         return ResponseEntity.ok((Client) clientMasterService.postClient(newClient));
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<Client>> getFromId(@PathVariable String id){
+        return ResponseEntity.ok(clientMasterService.getFromId(id));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Optional<Client>> putFromId(@PathVariable String id, @RequestBody Client newClient){
+        return ResponseEntity.ok(Optional.ofNullable(clientMasterService.replaceClient(id, newClient)));
     }
 }
