@@ -1,10 +1,15 @@
 package com.rumikuru.wcsserver.model;
 
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
+@Entity
+@Table(name = "PackMaster")
 public class PackMaster {
     private String sku_id; //Взаимосвязан с Sku.id
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String pack_id;
     private String description;
     private String barcode;

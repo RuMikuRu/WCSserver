@@ -1,20 +1,26 @@
 package com.rumikuru.wcsserver.model;
 
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
+@Table(name = "SHIPMENT")
+@Entity
 public class Shipment {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String shipment_NMB;
     private Date date_to_handling;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String carrier_id;
-    private String driver_name;
-    private String driver_pass_num;
-    private String driver_license;
-    private String driver_phone;
-    private String truck_type;
-    private String truck_plate;
-    private String trailer_plate;
+    @OneToOne
+    @JoinColumn(name = "driver_id", nullable = false)
+    private Driver driver;
+    @OneToOne
+    @JoinColumn(name = "car_id", nullable = false)
+    private Car car;
 
 }

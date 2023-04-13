@@ -1,9 +1,13 @@
 package com.rumikuru.wcsserver.model;
 
+import jakarta.persistence.*;
 import lombok.Data;
-
 @Data
+@Entity
+@Table(name = "ClientMaster")
 public class Client {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String clientId;
     private String name;
     private String address;

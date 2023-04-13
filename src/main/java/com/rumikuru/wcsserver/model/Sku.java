@@ -1,9 +1,14 @@
 package com.rumikuru.wcsserver.model;
 
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
+@Entity
+@Table(name = "SKU")
 public class Sku {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
     private String name;
     private String description;
