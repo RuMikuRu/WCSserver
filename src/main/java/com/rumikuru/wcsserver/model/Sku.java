@@ -1,5 +1,6 @@
 package com.rumikuru.wcsserver.model;
 
+import com.rumikuru.wcsserver.controller.GroupMaster;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,6 +16,8 @@ public class Sku {
     private String upc;
     private String manufacturer;
     private String country;
-    private String group_id;
+    @OneToOne
+    @JoinColumn(name = "GroupMaster_id_group")
+    private SkuGroups group_id;
     private char is_kit;
 }

@@ -7,15 +7,15 @@ import lombok.Data;
 @Table(name = "ClientMaster")
 public class Client {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String clientId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long clientId;
     private String name;
     private String address;
     private String phone;
     private String email;
     private String fax;
-    private char is_client;
-    private char is_manufacturer;
-    private char is_holder;
-    private char is_supplier;
+    private String is_client;
+    private String is_manufacturer;
+    private String is_holder;
+    private String is_supplier;
 }

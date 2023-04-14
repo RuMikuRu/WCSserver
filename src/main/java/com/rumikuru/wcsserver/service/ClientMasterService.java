@@ -6,13 +6,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+
 public interface ClientMasterService {
-
     List<Client> getAll();
-
-    Client postClient(Client newClient);
+    void postClient(Client newClient);
 
     Optional<Client> getFromId(String id);
     Client replaceClient(String id, Client newClient);
+
+    void delete(String valueOf);
 }

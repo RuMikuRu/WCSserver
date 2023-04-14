@@ -3,11 +3,16 @@ package com.rumikuru.wcsserver.service.impl;
 import com.rumikuru.wcsserver.model.Client;
 import com.rumikuru.wcsserver.repository.ClientMasterRepository;
 import com.rumikuru.wcsserver.service.ClientMasterService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ClientMasterServiceImpl implements ClientMasterService {
+    @Autowired
     ClientMasterRepository repository;
 
     @Override
@@ -16,19 +21,19 @@ public class ClientMasterServiceImpl implements ClientMasterService {
     }
 
     @Override
-    public Client postClient(Client newClient) {
+    public void postClient(Client newClient) {
         repository.save(newClient);
-        return newClient;
+       // return newClient;
     }
 
     @Override
     public Optional<Client> getFromId(String id) {
-        return repository.findById(id);
+        return repository.findById(Long.valueOf(id));
     }
 
     @Override
     public Client replaceClient(String id, Client newClient) {
-        return repository.findById(id)
+        return repository.findById(Long.valueOf(id))
                 .map(client -> {
                     client.setName(newClient.getName());
                     client.setIs_client(newClient.getIs_client());
@@ -41,8 +46,13 @@ public class ClientMasterServiceImpl implements ClientMasterService {
                     client.setIs_supplier(client.getIs_supplier());
                     return repository.save(client);
                 }).orElseGet(()->{
-                    newClient.setClientId(id);
+                    newClient.setClientId(Long.valueOf(id));
                     return repository.save(newClient);
                 });
+    }
+
+    @Override
+    public void delete(String valueOf) {
+        repository.deleteById(Long.valueOf(valueOf));
     }
 }
