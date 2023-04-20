@@ -8,11 +8,8 @@ import lombok.Data;
 import java.util.Date;
 @Data
 public class DeliveryResult {
+    @JoinColumn(name = "incomings_id")
     private String inc_Id;
+    @JoinColumn(name = "incomings_date_to_ship")
     private Date received_Date;
-
-    DeliveryResult(String inc_Id, Date received_Date){
-        this.inc_Id = inc_Id;
-        this.received_Date = received_Date;
-    }
 }

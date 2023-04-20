@@ -10,6 +10,6 @@ public class ShipmentResult {
     private Date date_to_handling;
     private String carrier_id;
     private Driver driver;
-    private  Car car;
+    private Car car;
 
 }

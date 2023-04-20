@@ -8,7 +8,9 @@ import lombok.EqualsAndHashCode;
 @Entity
 public class DeliveryDetails{
     private Integer line_num;
-    private String line_sku_id;
+    @OneToOne
+    @JoinColumn(name="SKU_id", nullable = false)
+    private Sku line_sku_id;
     private Integer line_doc_qty;
     private String line_comments;
     @Id

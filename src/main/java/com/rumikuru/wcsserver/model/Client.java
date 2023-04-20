@@ -18,4 +18,7 @@ public class Client {
     private String is_manufacturer;
     private String is_holder;
     private String is_supplier;
+
+    @OneToOne(optional = false, mappedBy = "supplier_id")
+    private Delivery delivery;
 }

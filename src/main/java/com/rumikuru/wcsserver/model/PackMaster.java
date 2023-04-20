@@ -7,7 +7,9 @@ import lombok.Data;
 @Entity
 @Table(name = "PackMaster")
 public class PackMaster {
-    private String sku_id; //Взаимосвязан с Sku.id
+    @OneToOne
+    @JoinColumn(name = "SKU_id", nullable = false)
+    private Sku sku_id; //Взаимосвязан с Sku.id
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String pack_id;

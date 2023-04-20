@@ -8,7 +8,6 @@ import lombok.Data;
 @Table(name = "CAR")
 public class Car {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
     private String truck_type;

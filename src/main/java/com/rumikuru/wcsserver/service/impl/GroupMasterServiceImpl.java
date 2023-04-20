@@ -30,4 +30,24 @@ public class GroupMasterServiceImpl implements GroupMasterService {
         repository.save(newSkuGroups);
         return Optional.of(newSkuGroups);
     }
+
+    @Override
+    public Optional<SkuGroups> putGroup(String id, SkuGroups newSkuGroups) {
+        return Optional.of(repository.findById(String.valueOf(Long.valueOf(id)))
+                .map(skuGroups -> {
+                    skuGroups.setName(newSkuGroups.getName());
+                    skuGroups.setId_group(newSkuGroups.getId_group());
+                    skuGroups.setParantId(newSkuGroups.getParantId());
+                    return repository.save(skuGroups);
+                }).orElseGet(() -> {
+                    newSkuGroups.setId_group(String.valueOf(Long.valueOf(id)));
+                    return repository.save(newSkuGroups);
+                }));
+    }
+
+    @Override
+    public void deleteGroup(String id) {
+        repository.deleteById(id);
+    }
+
 }

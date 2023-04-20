@@ -13,9 +13,9 @@ public class Shipment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String shipment_NMB;
     private Date date_to_handling;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String carrier_id;
+    @OneToOne
+    @JoinColumn(name = "client_master_id", nullable = false)
+    private Client carrier_id;
     @OneToOne
     @JoinColumn(name = "driver_id", nullable = false)
     private Driver driver;

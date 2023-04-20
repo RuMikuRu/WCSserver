@@ -14,8 +14,12 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
     private String shipment_NMB;
-    private String client_id;
-    private String holder_id;
+    @OneToOne
+    @JoinColumn(name = "client_master_id", nullable = false)
+    private Client client_id;
+    @OneToOne
+    @JoinColumn(name = "client_master_is_holder", nullable = false)
+    private Client holder_id;
     private String shipping_address;
     private char type;
     private Date date_to_ship;

@@ -12,4 +12,8 @@ public interface GroupMasterService {
     Optional<SkuGroups> getFromId(String id);
 
     Optional<SkuGroups> add(SkuGroups newSkuGroups);
+
+    Optional<SkuGroups> putGroup(String id, SkuGroups newSkuGroups);
+
+    void deleteGroup(String id);
 }
